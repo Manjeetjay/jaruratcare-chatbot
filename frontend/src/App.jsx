@@ -7,7 +7,7 @@ function App() {
   const [input, setInput] = useState('')
   const [userId] = useState('user-' + Math.floor(Math.random() * 10000))
   const messagesEndRef = useRef(null)
-  const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:8080'
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
