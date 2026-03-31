@@ -30,7 +30,12 @@ function App() {
         message: input
       })
       
-      setMessages(prev => [...prev, { sender: 'bot', text: response.data.reply }])
+      if (response.data && response.data.reply) {
+        setMessages(prev => [...prev, { sender: 'bot', text: response.data.reply }])
+      } else {
+        setMessages(prev => [...prev, { sender: 'bot', text: 'Error: Connection routed to Frontend instead of Backend. Check VITE_BASE_URL.' }])
+        console.error("Invalid Response:", response.data)
+      }
     } catch (error) {
       setMessages(prev => [...prev, { sender: 'bot', text: 'Error connecting to server.' }])
     }
