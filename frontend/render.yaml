@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: whatsapp-chatbot-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
