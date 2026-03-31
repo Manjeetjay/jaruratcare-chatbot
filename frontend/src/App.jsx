@@ -7,7 +7,7 @@ function App() {
   const [input, setInput] = useState('')
   const [userId] = useState('user-' + Math.floor(Math.random() * 10000))
   const messagesEndRef = useRef(null)
-
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -25,7 +25,7 @@ function App() {
     setInput('')
 
     try {
-      const response = await axios.post('http://localhost:8080/webhook', {
+      const response = await axios.post(`${BASE_URL}/webhook`, {
         userId,
         message: input
       })
